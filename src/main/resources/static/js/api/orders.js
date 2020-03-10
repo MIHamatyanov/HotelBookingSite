@@ -1,7 +1,8 @@
 import Vue from 'vue'
 
-const apartments = Vue.resource('/api/orders/{id}');
+const orders = Vue.resource('/api/orders/{id}');
 
 export default {
-    createOrder: (order) => apartments.save({}, order),
+    getById: (id) => orders.get({id}),
+    createOrder: (order) => orders.save({}, order),
 }

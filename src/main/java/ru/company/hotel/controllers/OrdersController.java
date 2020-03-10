@@ -1,9 +1,6 @@
 package ru.company.hotel.controllers;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.company.hotel.entities.Order;
 import ru.company.hotel.repos.OrderRepository;
 import ru.company.hotel.repos.UserRepository;
@@ -19,6 +16,11 @@ public class OrdersController {
     public OrdersController(OrderRepository orderRepository, UserRepository userRepository) {
         this.orderRepository = orderRepository;
         this.userRepository = userRepository;
+    }
+
+    @GetMapping("{id}")
+    public Order getOrder(@PathVariable("id") Order order) {
+        return order;
     }
 
     @PostMapping

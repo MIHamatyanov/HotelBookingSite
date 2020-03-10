@@ -21,14 +21,13 @@
                         <v-hover v-slot:default="{ hover }">
                             <v-card flat outlined :elevation="hover ? 12 : 0" @click="book(apartment.id)">
                                 <div class="photoContainer">
-                                    <v-img
+                                    <img
                                             :src="apartment.photoUrl"
+                                            :alt="apartment.name"
                                             class="photo"
                                             :class="{'on-hover': hover}"
                                             height="300px"
-                                            aspect-ratio="1"
-                                    >
-                                    </v-img>
+                                    />
                                 </div>
 
                                 <div class="px-4 py-4">

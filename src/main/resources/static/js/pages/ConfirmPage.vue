@@ -19,44 +19,7 @@
                         <h2>Бронирование подтверждено</h2>
                     </v-row>
                     <v-row justify="center" class="mx-12">
-                        <table class="mt-5 table">
-                            <tbody>
-                            <tr>
-                                <td class="title">Время бронирования:</td>
-                                <td class="subtitle-1 ml-5">{{formattedDate(orderInfo.creationDate)}}</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Отель:</td>
-                                <td class="subtitle-1 ml-5">{{orderInfo.apartment.hotel.name}}</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Адрес:</td>
-                                <td class="subtitle-1 ml-5">Ул. {{orderInfo.apartment.hotel.address.street}}, д.
-                                    {{orderInfo.apartment.hotel.address.houseNumber}}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="title">Дата заезда:</td>
-                                <td class="subtitle-1 ml-5">{{formattedDate(orderInfo.checkInDate)}}</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Дата выезда:</td>
-                                <td class="subtitle-1 ml-5">{{formattedDate(orderInfo.checkOutDate)}}</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Имя:</td>
-                                <td class="subtitle-1 ml-5">{{orderInfo.guest.name}}</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Номер для связи:</td>
-                                <td class="subtitle-1 ml-5">{{orderInfo.guest.phoneNumber}}</td>
-                            </tr>
-                            <tr>
-                                <td class="title">Email:</td>
-                                <td class="subtitle-1 ml-5">{{orderInfo.guest.email}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <span class="title">Информация о бронировании отправлена на указаный почтовый ящик.</span>
                     </v-row>
                     <v-row justify="center mt-10">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -88,14 +51,6 @@
                 checkInDate: '',
                 checkOutDate: '',
                 guests: '',
-                orderInfo: {
-                    guest: {},
-                    apartment: {
-                        hotel: {
-                            address: {}
-                        }
-                    }
-                }
             }
         },
         methods: {
@@ -109,7 +64,6 @@
         mounted() {
             ordersApi.getById(this.$route.query.order).then(result => {
                 result.json().then(data => {
-                    this.orderInfo = data;
                     this.checkInDate = data.checkInDate;
                     this.checkOutDate = data.checkOutDate;
                     this.city = data.apartment.hotel.address.city.name;
@@ -138,10 +92,6 @@
 
     .link:hover {
         border-bottom: 2px solid #414141;
-    }
-
-    .table {
-        width: 500px;
     }
 
     .table tr td:last-child {
